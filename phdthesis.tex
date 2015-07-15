@@ -1,0 +1,41 @@
+\documentclass[b5paper]{memoir}
+
+\input{preamble}
+
+\newdate{publishDate}{1}{11}{2015} % 1st of November 2015
+
+\newcommand{\thTitleEN}{Dynamic Modeling, Optimization, Fault Diagnosis, and Advanced Control for Biorefineries}
+\newcommand{\thAuthors}{Remus Mihail Prunescu}
+\newcommand{\thUniversityNameEN}{Technical University of Denmark}
+\newcommand{\thUniversityAddressEN}{Kgs. Lyngby, Denmark, \getdateyear{publishDate}}
+\newcommand{\thDepartmentNameEN}{Department of Electrical Engineering}
+\newcommand{\thGroupNameEN}{Automation and Control (AUT)}
+\newcommand{\thGroupAddressStreetEN}{Elektrovej Building 326}
+\newcommand{\thGroupAddressZIPCityEN}{DK-2800, Kgs. Lyngby}
+\newcommand{\thGroupAddressCountryEN}{Denmark}
+\newcommand{\thGroupAddressPhone}{(+45) 45 25 35 76}
+\newcommand{\thGroupAddressEmail}{\href{mailto:info@elektro.dtu.dk}{info@elektro.dtu.dk}}
+\newcommand{\thGroupAddressWWW}{\href{www.elektro.dtu.dk}{www.elektro.dtu.dk}}
+
+\newcommand{\thISBN}{978-87-92465-61-0}
+
+\begin{document}
+
+\input{titlepage}
+
+\frontmatter
+\include{summary}
+\include{resume}
+\include{preface}
+\include{listofpublications}
+\include{acknowledgments}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\include{introduction}
+\include{modeling}
+
+\end{document}

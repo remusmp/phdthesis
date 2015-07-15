@@ -1,0 +1,51 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{indentfirst}
+
+% Date
+\usepackage{datetime}
+\newdateformat{titlepagedate}{\monthname[\THEMONTH] \THEYEAR}
+
+% Font type
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+
+% Extra packages
+\usepackage{microtype}
+\usepackage{etoolbox}
+
+% Margins
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{2cm}{2cm}{*}
+\checkandfixthelayout
+
+% Style
+\chapterstyle{madsen}
+
+% Headers and footers
+% Normal page style
+\makepagestyle{hfpage}
+\makeevenhead{hfpage}{\scshape\leftmark}{}{}
+\makeoddhead{hfpage}{}{}{\rightmark}
+\makeevenfoot{hfpage}{\thepage}{}{}
+\makeoddfoot{hfpage}{}{}{\thepage}
+\makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
+
+\makepsmarks{hfpage}{%
+	\nouppercaseheads
+	\createmark{chapter}{left}{shownumber}{}{. \space}
+}
+
+% Chapters
+\makepagestyle{hfchapter}
+\makeevenhead{hfchapter}{}{}{}
+\makeoddhead{hfchapter}{}{}{}
+\makeevenfoot{hfchapter}{\thepage}{}{}
+\makeoddfoot{hfchapter}{}{}{\thepage}
+
+\pagestyle{hfpage}
+\aliaspagestyle{chapter}{hfchapter}
