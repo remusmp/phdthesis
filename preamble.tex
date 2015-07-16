@@ -6,17 +6,14 @@
 \usepackage{indentfirst}
 \usepackage{color}
 
+% Fonts
+\usepackage{lmodern} % math
 \usepackage{sourcesanspro} % sans-serif
 \usepackage{charter} % serif
 
 % Date
 \usepackage{datetime}
 \newdateformat{titlepagedate}{\monthname[\THEMONTH] \THEYEAR}
-
-% Font type
-\usepackage{mathptmx}
-%\usepackage[scaled=.90]{helvet}
-%\usepackage{courier}
 
 % Extra packages
 \usepackage{microtype}
@@ -47,7 +44,6 @@
 \makeoddhead{hfpage}{}{}{\color{shadecolor}\rightmark}
 \makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
 \makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
-%\makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
 
 \makepsmarks{hfpage}{%
 	\nouppercaseheads
@@ -63,3 +59,8 @@
 
 \pagestyle{hfpage}
 \aliaspagestyle{chapter}{hfchapter}
+
+% Bibliography
+\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false]{biblatex}
+
+\addbibresource{bib/library.bib}
