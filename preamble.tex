@@ -4,6 +4,10 @@
 \usepackage{hyperref}
 \usepackage{lipsum}
 \usepackage{indentfirst}
+\usepackage{color}
+
+\usepackage{sourcesanspro} % sans-serif
+\usepackage{charter} % serif
 
 % Date
 \usepackage{datetime}
@@ -11,8 +15,8 @@
 
 % Font type
 \usepackage{mathptmx}
-\usepackage[scaled=.90]{helvet}
-\usepackage{courier}
+%\usepackage[scaled=.90]{helvet}
+%\usepackage{courier}
 
 % Extra packages
 \usepackage{microtype}
@@ -23,17 +27,27 @@
 \setulmarginsandblock{2cm}{2cm}{*}
 \checkandfixthelayout
 
-% Style
-\chapterstyle{madsen}
+% Chapter style
+\makechapterstyle{chstyle}{%
+	\renewcommand\chapnamefont{%
+		\normalfont\Huge\sffamily
+	}
+	\renewcommand\chaptitlefont{%
+		\normalfont\Huge\sffamily\bfseries
+	}
+	\renewcommand\printchapternum{\chapnamefont\HUGE\bfseries\thechapter}
+}
+\chapterstyle{chstyle}
 
 % Headers and footers
+\definecolor{shadecolor}{rgb}{.4, .4, .4}
 % Normal page style
 \makepagestyle{hfpage}
-\makeevenhead{hfpage}{\scshape\leftmark}{}{}
-\makeoddhead{hfpage}{}{}{\rightmark}
-\makeevenfoot{hfpage}{\thepage}{}{}
-\makeoddfoot{hfpage}{}{}{\thepage}
-\makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
+\makeevenhead{hfpage}{\color{shadecolor}\scshape\leftmark}{}{}
+\makeoddhead{hfpage}{}{}{\color{shadecolor}\rightmark}
+\makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
+\makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
+%\makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
 
 \makepsmarks{hfpage}{%
 	\nouppercaseheads
