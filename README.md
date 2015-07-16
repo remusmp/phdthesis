@@ -1,1 +1,1 @@
-Clean, simple, easy-to-use, and designed from scratch PhD thesis.
+A PhD thesis template that is clean, simple, with no hacks, easy-to-use, and designed from scratch.
