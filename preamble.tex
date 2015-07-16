@@ -1,5 +1,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{lipsum}
@@ -7,6 +8,8 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{atbegshi}
+
+\abnormalparskip{0pt}
 
 % Fonts
 \usepackage{lmodern} % math
@@ -23,7 +26,7 @@
 
 % Margins
 \setlrmarginsandblock{3cm}{2cm}{*}
-\setulmarginsandblock{2cm}{2cm}{*}
+\setulmarginsandblock{2.5cm}{2.5cm}{*}
 \checkandfixthelayout
 
 % Chapter style
@@ -43,7 +46,7 @@
 % Normal page style
 \makepagestyle{hfpage}
 \makeevenhead{hfpage}{\color{shadecolor}\scshape\leftmark}{}{}
-\makeoddhead{hfpage}{}{}{\color{shadecolor}\rightmark}
+\makeoddhead{hfpage}{}{}{\color{shadecolor}\scshape\rightmark}
 \makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
 \makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
 
@@ -56,13 +59,29 @@
 \makepagestyle{hfchapter}
 \makeevenhead{hfchapter}{}{}{}
 \makeoddhead{hfchapter}{}{}{}
-\makeevenfoot{hfchapter}{\thepage}{}{}
-\makeoddfoot{hfchapter}{}{}{\thepage}
+\makeevenfoot{hfchapter}{\color{shadecolor}\thepage}{}{}
+\makeoddfoot{hfchapter}{}{}{\color{shadecolor}\thepage}
 
 \pagestyle{hfpage}
 \aliaspagestyle{chapter}{hfchapter}
 
 % Bibliography
-\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false]{biblatex}
+\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false]{biblatex}
 
+% Remove In: from journal articles
+\renewbibmacro{in:}{%
+	\ifentrytype{article}{}{%
+		\ifentrytype{inproceedings}{}{%
+			\printtext{\bibstring{in}\intitlepunct}
+		}
+	}
+}
+
+% Bib file
 \addbibresource{bib/library.bib}
+
+% Change table of contents name
+\addto\captionsenglish{% Replace "english" with the language you use
+	\renewcommand{\contentsname}%
+	{Table of Contents}%
+}
