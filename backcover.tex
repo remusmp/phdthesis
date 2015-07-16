@@ -1,0 +1,26 @@
+\cleardoublepage
+\thispagestyle{empty}
+\phantom{\ }
+\newpage
+\AtBeginShipoutNext{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+\begin{titlingpage}
+	\sffamily
+	\thispagestyle{empty}
+	\calccentering{\unitlength}
+	\begin{adjustwidth}{\unitlength}{-\unitlength}
+		\begin{adjustwidth}{-0.5cm}{-0.5cm}
+			\vspace*{\stretch{1}}
+			
+			\noindent
+			\thUniversityNameEN\\
+			\thGroupNameEN\\
+			\thGroupAddressStreetEN\\
+			\thGroupAddressZIPCityEN\\
+			\thGroupAddressCountryEN\\
+			Phone: \thGroupAddressPhone\\
+			Email: \thGroupAddressEmail\\
+			\thGroupAddressWWW\\[1cm]
+			ISBN: \thISBN
+		\end{adjustwidth}
+	\end{adjustwidth}
+\end{titlingpage}
