@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{lipsum}
 \usepackage{indentfirst}
 \usepackage{color}
@@ -25,7 +25,7 @@
 \usepackage{etoolbox}
 
 % Margins
-\setlrmarginsandblock{3cm}{2cm}{*}
+\setlrmarginsandblock{2.9cm}{2cm}{*}
 \setulmarginsandblock{2.5cm}{2.5cm}{*}
 \checkandfixthelayout
 
@@ -37,7 +37,7 @@
 	\renewcommand\chaptitlefont{%
 		\normalfont\Huge\sffamily\bfseries
 	}
-	\renewcommand\printchapternum{\chapnamefont\HUGE\bfseries\thechapter}
+	\renewcommand\printchapternum{\chapnamefont\HUGE\thechapter}
 }
 \chapterstyle{chstyle}
 
