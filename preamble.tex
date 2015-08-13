@@ -11,6 +11,8 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{etoolbox}
 
 \abnormalparskip{0pt}
 
@@ -19,13 +21,13 @@
 \usepackage{sourcesanspro} % sans-serif
 \usepackage{charter} % serif
 
+% Subfloats
+\newsubfloat{figure} % Subfigures
+\newsubfloat{table} % Subtables
+
 % Date
 \usepackage{datetime}
 \newdateformat{titlepagedate}{\monthname[\THEMONTH] \THEYEAR}
-
-% Extra packages
-\usepackage{microtype}
-\usepackage{etoolbox}
 
 % Margins
 \setlrmarginsandblock{2.9cm}{2cm}{*}
@@ -95,11 +97,14 @@
 	}
 }
 
-% Bib file
+% Bib resource file
 \addbibresource{bib/library.bib}
 
 % Change table of contents name
+% Rename appendix chapter name
 \addto\captionsenglish{% Replace "english" with the language you use
-	\renewcommand{\contentsname}%
-	{Table of Contents}%
+	\renewcommand\contentsname{Table of Contents}%
+	\renewcommand\appendixname{Paper}
+	\renewcommand\appendixpagename{Papers}
 }
+\renewcommand*{\cftappendixname}{Paper\space}
