@@ -75,11 +75,13 @@
 \aliaspagestyle{chapter}{hfchapter}
 
 % Bibliography
-\usepackage[backend=biber, sorting=none, maxnames=99, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false]{biblatex}
+\usepackage[style=authoryear, backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
 
 % Print your publication
-\DeclareCiteCommand{\printpublication}
-{\boolfalse{citetracker}%
+\newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\myprintpublication{#1}}
+\DeclareCiteCommand{\myprintpublication}
+{%
+	\boolfalse{citetracker}%
 	\boolfalse{pagetracker}%
 	\DeclareNameAlias{labelname}{first-last}%
 	\usebibmacro{prenote}}
