@@ -50,10 +50,14 @@
 \definecolor{shadecolor}{rgb}{.4, .4, .4}
 % Normal page style
 \makepagestyle{hfpage}
-\makeevenhead{hfpage}{\color{shadecolor}\scshape\leftmark}{}{}
-\makeoddhead{hfpage}{}{}{\color{shadecolor}\scshape\rightmark}
-\makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
-\makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
+%\makeevenhead{hfpage}{\color{shadecolor}\scshape\leftmark}{}{}
+%\makeoddhead{hfpage}{}{}{\color{shadecolor}\scshape\rightmark}
+%\makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
+%\makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
+\makeevenhead{hfpage}{\thepage}{}{\leftmark}
+\makeoddhead{hfpage}{\rightmark}{}{\thepage}
+\makeevenfoot{hfpage}{}{}{}
+\makeoddfoot{hfpage}{}{}{}
 
 \makepsmarks{hfpage}{%
 	\nouppercaseheads
