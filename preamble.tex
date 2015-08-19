@@ -14,7 +14,7 @@
 \usepackage{microtype}
 \usepackage{etoolbox}
 
-\abnormalparskip{0pt}
+\abnormalparskip{0pt} % No space between paragraphs
 
 % Fonts
 \usepackage{mathptmx} % math
@@ -47,35 +47,26 @@
 \chapterstyle{chstyle}
 
 % Headers and footers
-\definecolor{shadecolor}{rgb}{.4, .4, .4}
 % Normal page style
 \makepagestyle{hfpage}
-%\makeevenhead{hfpage}{\color{shadecolor}\scshape\leftmark}{}{}
-%\makeoddhead{hfpage}{}{}{\color{shadecolor}\scshape\rightmark}
-%\makeevenfoot{hfpage}{\color{shadecolor}\thepage}{}{}
-%\makeoddfoot{hfpage}{}{}{\color{shadecolor}\thepage}
 \makeevenhead{hfpage}{\thepage}{}{\leftmark}
 \makeoddhead{hfpage}{\rightmark}{}{\thepage}
 \makeevenfoot{hfpage}{}{}{}
 \makeoddfoot{hfpage}{}{}{}
-
+\makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
 \makepsmarks{hfpage}{%
 	\nouppercaseheads
-	\createmark{chapter}{left}{shownumber}{}{. \space}
+	\createmark{chapter}{left}{shownumber}{}{ \space}
+	\createmark{section}{right}{shownumber}{}{ \space}
 }
-
-% Chapters
-\makepagestyle{hfchapter}
-\makeevenhead{hfchapter}{}{}{}
-\makeoddhead{hfchapter}{}{}{}
-\makeevenfoot{hfchapter}{\color{shadecolor}\thepage}{}{}
-\makeoddfoot{hfchapter}{}{}{\color{shadecolor}\thepage}
-
 \pagestyle{hfpage}
-\aliaspagestyle{chapter}{hfchapter}
+\aliaspagestyle{chapter}{empty}
 
-% Bibliography
+% Bibliography (uncomment your preferred style)
+% Author-year
 \usepackage[style=authoryear, backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
+% Numeric (default)
+%\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, natbib=true]{biblatex}
 
 % Print your publication
 \newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\myprintpublication{#1}}
@@ -107,10 +98,10 @@
 \addbibresource{bib/library.bib}
 
 % Change table of contents name
-% Rename appendix chapter name
+% Appendix name is changed to Papers
 \addto\captionsenglish{% Replace "english" with the language you use
 	\renewcommand\contentsname{Table of Contents}%
 	\renewcommand\appendixname{Paper}
 	\renewcommand\appendixpagename{Papers}
 }
-\renewcommand*{\cftappendixname}{Paper\space}
+\renewcommand*{\cftappendixname}{Paper\space} % ToC appendix name
