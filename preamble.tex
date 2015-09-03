@@ -8,13 +8,37 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{atbegshi}
-\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{etoolbox}
+\usepackage{longtable}
+\usepackage{nomencl}
+\usepackage{placeins}
+\usepackage{adjustbox}
 
-\abnormalparskip{0pt} % No space between paragraphs
+% Scientific packages
+\usepackage{siunitx}
+\usepackage[version=3]{mhchem}
+\usepackage{nth}
+\usepackage{algorithm, algpseudocode}
+\usepackage{mathtools}
+\usepackage{authblk}
+\usepackage{pgfplotstable}
+
+% High quality graphics
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes,arrows}
+
+\usetikzlibrary{external}
+\tikzexternalize[mode=list and make]
+
+% No space between paragraphs
+\abnormalparskip{0pt}
 
 % Fonts
 \usepackage{mathptmx} % math
@@ -34,6 +58,9 @@
 \setulmarginsandblock{2.5cm}{2.5cm}{*}
 \checkandfixthelayout
 
+% Subsection numbering
+\setsecnumdepth{subsubsection}
+
 % Chapter style
 \makechapterstyle{chstyle}{%
 	\renewcommand\chapnamefont{%
@@ -46,6 +73,20 @@
 }
 \chapterstyle{chstyle}
 
+% Publications chapter style
+\makechapterstyle{publicationchstyle}{%
+	\renewcommand\chapnamefont{%
+		\normalfont\Huge\sffamily
+	}
+	\renewcommand\chaptitlefont{%
+		\normalfont\HUGE\sffamily\bfseries
+	}
+	\renewcommand\printchapternum{%
+		\chapnamefont\Huge\space\thechapter
+	}
+	\renewcommand{\chapterheadstart}{}
+}
+
 % Headers and footers
 % Normal page style
 \makepagestyle{hfpage}
@@ -56,15 +97,13 @@
 \makeheadrule{hfpage}{\textwidth}{\normalrulethickness}
 \makepsmarks{hfpage}{%
 	\nouppercaseheads
-	\createmark{chapter}{left}{shownumber}{}{ \space}
-	\createmark{section}{right}{shownumber}{}{ \space}
 }
 \pagestyle{hfpage}
 \aliaspagestyle{chapter}{empty}
 
 % Bibliography (uncomment your preferred style)
 % Author-year
-\usepackage[style=authoryear, backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
+\usepackage[style=authoryear, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
 % Numeric (default)
 %\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, natbib=true]{biblatex}
 
@@ -105,3 +144,26 @@
 	\renewcommand\appendixpagename{Papers}
 }
 \renewcommand*{\cftappendixname}{Paper\space} % ToC appendix name
+
+% Bold caption name
+\captionnamefont{\bfseries\small}
+\captiontitlefont{\small}
+
+% Algorithm settings
+\algtext*{EndWhile}% Remove "end while" text
+\algtext*{EndIf}% Remove "end if" text
+\algtext*{EndFor}% Remove "end for" text
+\algtext*{EndFunction}% Remove "end for" text
+
+% Row number counter
+\preto\tabular{\setcounter{magicrownumbers}{0}}
+\preto\longtable{\setcounter{magicrownumbers}{0}}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+
+% Black and white graphics
+\newbool{bBlackWhite}
+\boolfalse{bBlackWhite}
+
+% Publication folder
+\newcommand{\folder}{}
