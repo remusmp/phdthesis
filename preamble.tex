@@ -16,6 +16,7 @@
 \usepackage{nomencl}
 \usepackage{placeins}
 \usepackage{adjustbox}
+\usepackage{csquotes}
 
 % Scientific packages
 \usepackage{siunitx}
@@ -26,6 +27,11 @@
 \usepackage{authblk}
 \usepackage{pgfplotstable}
 
+\let\printglossary\relax
+\let\theglossary\relax
+\let\endtheglossary\relax
+\usepackage[acronym, toc]{glossaries}
+
 % High quality graphics
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
@@ -35,7 +41,7 @@
 \usetikzlibrary{shapes,arrows}
 
 \usetikzlibrary{external}
-\tikzexternalize[mode=list and make]
+\tikzexternalize[mode=list and make, prefix=tikz/]
 
 % No space between paragraphs
 \abnormalparskip{0pt}
@@ -51,7 +57,7 @@
 
 % Date
 \usepackage{datetime}
-\newdateformat{titlepagedate}{\monthname[\THEMONTH] \THEYEAR}
+\newdateformat{titlepagedate}{\protect\monthname[\THEMONTH] \THEYEAR}
 
 % Margins
 \setlrmarginsandblock{2.9cm}{2cm}{*}
@@ -69,6 +75,9 @@
 	\renewcommand\chaptitlefont{%
 		\normalfont\HUGE\sffamily\bfseries
 	}
+	\renewcommand\printchaptertitle[1]{%
+		\chaptitlefont \begin{Spacing}{1}##1\end{Spacing}
+	}
 	\renewcommand\printchapternum{\chapnamefont\Huge\space\thechapter}
 }
 \chapterstyle{chstyle}
@@ -84,6 +93,10 @@
 	\renewcommand\printchapternum{%
 		\chapnamefont\Huge\space\thechapter
 	}
+	\renewcommand\printchaptertitle[1]{%
+		\chaptitlefont \begin{Spacing}{1}##1\end{Spacing}
+	}
+	\setlength{\afterchapskip}{\baselineskip}
 	\renewcommand{\chapterheadstart}{}
 }
 
@@ -103,35 +116,13 @@
 
 % Bibliography (uncomment your preferred style)
 % Author-year
-\usepackage[style=authoryear, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
+%\usepackage[style=authoryear, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
+
 % Numeric (default)
-%\usepackage[backend=biber, sorting=none, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, natbib=true]{biblatex}
+\usepackage[style=numeric, sorting=none, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, eprint=false, natbib=true]{biblatex}
 
 % Print your publication
-\newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\myprintpublication{#1}}
-\DeclareCiteCommand{\myprintpublication}
-{%
-	\boolfalse{citetracker}%
-	\boolfalse{pagetracker}%
-	\DeclareNameAlias{labelname}{first-last}%
-	\usebibmacro{prenote}}
-{\ifciteindex
-	{\indexnames{labelname}}
-	{}%
-	\printnames{labelname}. \printfield{title}. %
-	\ifentrytype{inproceedings}{\printfield{booktitle}}{}%
-	\ifentrytype{article}{\printfield{journaltitle}}{}, \printfield{year}.}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-% Remove In: from journal articles
-\renewbibmacro{in:}{%
-	\ifentrytype{article}{}{%
-		\ifentrytype{inproceedings}{}{%
-			\printtext{\bibstring{in}\intitlepunct}
-		}
-	}
-}
+\newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
 
 % Bib resource file
 \addbibresource{bib/library.bib}
@@ -156,7 +147,7 @@
 \algtext*{EndFunction}% Remove "end for" text
 
 % Row number counter
-\preto\tabular{\setcounter{magicrownumbers}{0}}
+\preto\tabular{\setcounter{magicrownumbers}{0}\small}
 \preto\longtable{\setcounter{magicrownumbers}{0}}
 \newcounter{magicrownumbers}
 \newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
@@ -167,3 +158,5 @@
 
 % Publication folder
 \newcommand{\folder}{}
+
+\OnehalfSpacing*

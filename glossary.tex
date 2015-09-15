@@ -1,0 +1,11 @@
+\chapter{Abbreviations}
+Add new terms in abbreviations.tex following the code sample from that file. Inside the body text use the defined terms in the following way:
+\begin{itemize}
+	\item \textbackslash gls\{term\} prints the expanded term with the acronym inside parenthesis if the term appears for the first time:
+	\gls{IBUS}
+	
+	\item A consecutive use of \textbackslash gls\{term\} of an already defined term will only print its acronym:
+	\gls{IBUS}
+\end{itemize}
+
+The list of abbreviations is automatically populated with all terms sorted alphabetically plus links to all pages where terms are used.
