@@ -47,9 +47,28 @@
 \abnormalparskip{0pt}
 
 % Fonts
-\usepackage{mathptmx} % math
-\usepackage{sourcesanspro} % sans-serif
-\usepackage{charter} % serif
+\ifxetex
+    % Fonts -- for xelatex
+    \usepackage{mathptmx} % math
+    \usepackage[semibold]{sourcesanspro} % sans-serif
+    \setmainfont{XCharter}
+\else\ifluatex
+    % Fonts -- for xelatex
+    \usepackage{mathptmx} % math
+    \usepackage[semibold]{sourcesanspro} % sans-serif
+    \setmainfont{XCharter}
+\else\ifpdf
+    % Fonts -- for pdflatex
+    \usepackage{mathptmx} % math
+    \usepackage[semibold]{sourcesanspro} % sans-serif
+    \usepackage{charter} % serif
+\else
+    % Anything else, whatever that may be...
+    %%\usepackage[bitstream-charter]{mathdesign} % serif
+    \usepackage{mathptmx} % math
+    \usepackage{sourcesanspro} % sans-serif
+    \usepackage{charter} % serif
+\fi\fi\fi
 
 % Subfloats
 \newsubfloat{figure} % Subfigures
