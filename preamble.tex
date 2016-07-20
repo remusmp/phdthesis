@@ -52,21 +52,18 @@
 \usepackage{lmodern} % typewriter font
 \usepackage{mathptmx} % math
 %\usepackage[bitstream-charter]{mathdesign} % math
+\usepackage[semibold]{sourcesanspro} % sans-serif
 \ifxetex
     % Fonts -- for xelatex
-    \usepackage[semibold]{sourcesanspro} % sans-serif
     \setmainfont{XCharter}
 \else\ifluatex
     % Fonts -- for xelatex
-    \usepackage[semibold]{sourcesanspro} % sans-serif
     \setmainfont{XCharter}
 \else\ifpdf
     % Fonts -- for pdflatex
-    \usepackage[semibold]{sourcesanspro} % sans-serif
     \usepackage{charter} % serif
 \else
     % Anything else, whatever that may be...
-    \usepackage{sourcesanspro} % sans-serif
     \usepackage{charter} % serif
 \fi\fi\fi
 
@@ -180,7 +177,6 @@
 % Publication folder
 \newcommand{\folder}{}
 
-<<<<<<< HEAD
 % Signature command
 \makeatletter
 \newcommand*{\getlength}[1]{\strip@pt#1}
@@ -195,6 +191,3 @@
 }
 
 \OnehalfSpacing*
-=======
-\OnehalfSpacing*
->>>>>>> 31085210d3e11daae779b82e0986ba8027c92a13

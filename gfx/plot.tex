@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+	\begin{axis}[
+		width=\figWidth,
+		title = {Estimation of the state},
+		xlabel = {[\si{\second}]},
+		ylabel = {[\si{\radian\per\second}]},
+		grid,
+		enlargelimits=false,
+		ymin = -0.025,
+		ymax = 0.04,
+		yticklabel pos = left,
+		scaled ticks = false,
+		yticklabel style = {
+			rotate = 0,
+			/pgf/number format/fixed,
+			/pgf/number format/fixed zerofill
+		}
+	]
+		\pgfplotstableread[col sep = comma]{gfx/zoom_plot.csv}\myData;
+		\addplot[blue, thick] table[x index = 0, y index = 1]{\myData};
+		\addlegendentry{$\omega_l$}
+		\addplot[red, thick] table[x index = 0, y index = 2]{\myData};
+		\addlegendentry{$\hat{\omega}_l$}
+	\end{axis}
+\end{tikzpicture}
