@@ -1,1 +1,54 @@
-\chapter{Contributions}
+\chapter{Summary of Main Contributions}
+\label{chap:contributions}
+
+\section*{Journal Articles}
+The contributions of this research related to the modeling library and the optimization layer have been published (at the time of thesis submission, the optimization paper was undergoing the peer-review process) in three journal articles:
+\begin{enumerate}[label=(\Alph*)]
+	\item \printpublication{Prunescu2015}.
+	
+	This study publishes for the first time a dynamic model for hydrothermal pretreatment with steam that is validated against demonstration scale real measurements. The model embeds mass and energy balances together with computational fluid dynamics for describing a large scale thermal reactor for biomass pretreatment. A comprehensive model analysis follows for assessing its sensitivity and uncertainty with respect to both feed and kinetic parameters. The dynamic trends of the process are well captured making the model suitable for developing advanced control and monitoring strategies for large scale plants. As an application of the model, the study includes the development of a state observer for estimating biomass components that are difficult to measure in reality.
+	
+	\item \printpublication{Prunescu2013b}.
+	
+	This work formulates a complex dynamic model for enzymatic hydrolysis of cellulosic and hemicellulosic fibers suitable for large scale liquefaction reactors. The model includes a competitive conversion scheme for sugar production that was extended from previous works with hemicellulose hydrolysis, pH and viscosity calculators, and pH dependency on reaction kinetics. For the first time, model predictions are compared against demonstration scale real data extracted from the Inbicon plant. A sensitivity and uncertainty analysis is also performed to study modeling bottlenecks and for identifying the sensitive variables that affect most the uncertainty of model predictions.
+	
+	\item \printpublication{Prunescu2016}.
+	
+	The scientific novelty of this work is the design of a plantwide model-based optimization layer for a large scale biorefinery. The objective is to maximize the economic profit by searching for the best trade-off between the conversion steps. The optimization solver can be triggered whenever there is a change in prices or feedstock composition, adapting the plant to market and operation conditions in order to maximize profitability at any given time. The optimization layer undergoes a sensitivity and uncertainty analysis for finding the variables that affect most the optimal point, and hence the economical profit. It is found that the optimization strategy is capable of reducing the uncertainty on the profit curve when compared to a traditional operation, and also allows running the plant in a wider nominal range with small impact on profitability. Feedstock composition impacts more on profit than model kinetics showing the need of accurate measurements of its composition.
+\end{enumerate}
+
+\section*{Peer Reviewed Conference Proceedings (Web of Science)}
+The results concerning the advanced adaptive control strategies for process key parameters were disseminated in two peer-reviewed IEEE conference papers:
+
+\begin{enumerate}[label=(\Alph*), resume]
+	\item \printpublication{Prunescu2013}.
+	
+	It has been shown in the sensitivity analysis of the pretreatment process that thermal conditions impact all downstream processes. Maintaining a steady reaction temperature, as well as quick reference tracking as imposed by the optimization layer is of interest in this study. The main contribution refers to the application of an L1 adaptive output feedback controller for this type of process. The tuning method is also new consisting of numerical optimization for minimizing the \gls{IAE} cost function with respect to the controller parameters.
+	
+	\item \printpublication{Prunescu2013a}.
+	
+	Enzymatic activity is sensitive to the pH of the medium. The titration curve is highly nonlinear and poses a difficult challenge for any control strategy. The contribution from this work refers to the application of an L1 adaptive output feedback controller for enzymatic pH. The tuning method is new for this kind of processes, and relies on closed loop transfer function analysis that takes into account the interactions between the output predictor, the control signal filter and adaptation law.
+\end{enumerate}
+
+\section*{Unpublished Work}
+There are two unpublished contributions included in this thesis:
+\begin{enumerate}[labelindent=\parindent, leftmargin=!, labelwidth=\widthof{(Section 3.4.4)}]
+	\item[(Section \ref{sec:mathematics:equations})] A fast pH calculator with guaranteed accuracy for dynamic simulations:
+	
+	pH is a key process parameter both in enzymatic hydrolysis and fermentation. The novelty from this section refers to a pH calculator that converges in a known amount of steps depending on the demanded accuracy. The algorithm is based on the charge balance of the liquid phase, and uses a modified bisection method that advances in logarithmic space for finding the pH level. The dynamic nature of simulations is also exploited, taking into account the solution from the previous simulation step in order to find tight bounds around the possible solution. The pH calculator has proven to be reliable and fast with guaranteed accuracy.
+	
+	\item[(Section \ref{sec:mathematics:matrices})] An optimal controller for the feed profile in glucose fermentation:
+	
+	Fermentation reactors have a large volume and it can take days to fill the tanks till the desired hold-up, time when reactions already take place. The contribution from this section shows how to compute an optimal feed rate profile such that inhibitors accumulation is avoided and yeast seed is minimized. The profile is found by formulating an \gls{OCP} and then compared to a classical constant feed strategy. The greatest benefit of a variable feed rate is that yeast amount is significantly reduced contributing to lower costs in fermentation.
+	
+\end{enumerate}
+
+\section*{Conference Presentations}
+All contributions were also disseminated in prestigious conferences through specialized session talks:
+\begin{itemize}
+	\item \printpublication{Prunescu2015b}.
+	\item \printpublication{Prunescu2015a}.
+	\item \printpublication{Prunescu2014}.
+	\item \printpublication{Prunescu2014a}.
+	\item \printpublication{Prunescu2013g}.
+\end{itemize}

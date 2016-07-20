@@ -34,20 +34,24 @@
 
 % High quality graphics
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{calc}
+\usetikzlibrary{spy}
 \usetikzlibrary{shapes,arrows}
 
-\usetikzlibrary{external}
-\tikzexternalize[mode=list and make, prefix=tikz/]
+%\usetikzlibrary{external}
+%\tikzexternalize[mode=list and make, prefix=tikz/]
 
 % No space between paragraphs
 \abnormalparskip{0pt}
 
 % Fonts
-\usepackage{mathptmx} % math
+\usepackage{lmodern} % typewriter font
+%\usepackage{mathptmx} % math
+\usepackage[bitstream-charter]{mathdesign} % math
 \usepackage{sourcesanspro} % sans-serif
 \usepackage{charter} % serif
 
@@ -56,6 +60,7 @@
 \newsubfloat{table} % Subtables
 
 % Date
+\let\ordinal\relax
 \usepackage{datetime}
 \newdateformat{titlepagedate}{\protect\monthname[\THEMONTH] \THEYEAR}
 
@@ -116,13 +121,14 @@
 
 % Bibliography (uncomment your preferred style)
 % Author-year
-%\usepackage[style=authoryear, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
+%\usepackage[style=authoryear, backend=biber, maxcitenames=2, maxbibnames=99, giveninits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, dashed=false, natbib=true]{biblatex}
 
 % Numeric (default)
-\usepackage[style=numeric, sorting=none, backend=biber, maxcitenames=2, maxbibnames=99, firstinits=true, uniquename=false, uniquelist=false, url=false, doi=false, isbn=false, eprint=false, natbib=true]{biblatex}
+\usepackage[style=numeric, sorting=none, backend=biber, maxcitenames=2, maxbibnames=99, giveninits=true, uniquename=false, uniquelist=false, url=false, doi=true, isbn=false, eprint=false, natbib=true, sortcites=true]{biblatex}
 
 % Print your publication
 \newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
+\renewbibmacro{in:}{}
 
 % Bib resource file
 \addbibresource{bib/library.bib}
@@ -148,7 +154,7 @@
 
 % Row number counter
 \preto\tabular{\setcounter{magicrownumbers}{0}\small}
-\preto\longtable{\setcounter{magicrownumbers}{0}}
+\preto\longtable{\setcounter{magicrownumbers}{0}\small}
 \newcounter{magicrownumbers}
 \newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
 
@@ -158,5 +164,18 @@
 
 % Publication folder
 \newcommand{\folder}{}
+
+% Signature command
+\makeatletter
+\newcommand*{\getlength}[1]{\strip@pt#1}
+\makeatother
+
+\newlength{\signlength}
+\setlength{\signlength}{0.5\textwidth}
+
+\newcommand{\signature}[1]{%
+	\noindent \line(1,0){\getlength{\signlength}}\\
+	\noindent #1
+}
 
 \OnehalfSpacing*

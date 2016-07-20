@@ -1,1 +1,34 @@
 \chapter{High-Quality Graphics}
+
+
+\section{Plots}
+\begin{figure}[htbp]
+	\centering
+	\def\figWidth{0.75\textwidth}
+	\input{gfx/plot}
+	\caption{Plot from csv file.}
+	\label{fig:plot}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\subbottom[Plot 1]{
+		\def\figWidth{0.45\textwidth}
+		\input{gfx/plot}
+	}
+	\subbottom[Plot 2]{
+		\def\figWidth{0.45\textwidth}
+		\input{gfx/plot}
+	}
+	\caption{Side by side plots.}
+	\label{fig:side_by_side_plots}
+\end{figure}
+
+\FloatBarrier
+\section{Zoom-In Plot}
+\begin{figure}[htbp]
+	\centering
+	\input{gfx/zoom_plot}
+	\caption{Beautiful plot with zoom-in section made by Dimitrios Papageorgiou in 2015.}
+	\label{fig:zoom_plot}
+\end{figure}
